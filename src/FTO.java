@@ -159,18 +159,20 @@ public class FTO {
                 case "Bs'":
                 case "S":
                 case "Fs":
-                    //Do Fs move
+                    doFs(1);
                     break;
                 case "Bs":
                 case "S'":
                 case "Fs'":
-                    //Do Fs' move
+                    doFs(2);
                     break;
                 case "Fw":
-                    //Do Fw move
+                    doF(1);
+                    doFs(1);
                     break;
                 case "Fw'":
-                    //Do Fw' move
+                    doF(1);
+                    doFs(1);
                     break;
                 case "Bo'":
                 case "Fo":
@@ -840,6 +842,52 @@ public class FTO {
             temp = state[12];
             state[12] = state[64];
             state[64] = state[34];
+            state[34] = temp;
+        }
+    }
+
+    /**
+     * Applies an Fs move "times" times
+     *
+     * @param times
+     */
+    public void doFs(int times) {
+        int temp;
+        for (int i = 0; i < times; i++) {
+            //Top Triangles
+            temp = state[6];
+            state[6] = state[61];
+            state[61] = state[41];
+            state[41] = temp;
+
+            //Left Triangles
+            temp = state[10];
+            state[10] = state[69];
+            state[69] = state[30];
+            state[30] = temp;
+
+            //UR Edges
+            temp = state[7];
+            state[7] = state[57];
+            state[57] = state[42];
+            state[42] = temp;
+
+            //RU Edges
+            temp = state[29];
+            state[29] = state[14];
+            state[14] = state[70];
+            state[70] = temp;
+
+            //UL Edges
+            temp = state[5];
+            state[5] = state[60];
+            state[60] = state[37];
+            state[37] = temp;
+
+            //LU Edges
+            temp = state[11];
+            state[11] = state[68];
+            state[68] = state[34];
             state[34] = temp;
         }
     }
