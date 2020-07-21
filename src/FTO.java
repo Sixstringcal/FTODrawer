@@ -120,17 +120,19 @@ public class FTO {
                     break;
                 case "BRs'":
                 case "Ls":
-                    //Do Ls move
+                    doLs(1);
                     break;
                 case "BRs":
                 case "Ls'":
-                    //Do Ls' move
+                    doLs(2);
                     break;
                 case "Lw":
-                    //Do Lw move
+                    doL(1);
+                    doLs(1);
                     break;
                 case "Lw'":
-                    //Do Lw' move
+                    doL(1);
+                    doLs(2);
                     break;
                 case "Lo":
                     //Do Lo rotation
@@ -667,6 +669,52 @@ public class FTO {
             state[6] = state[56];
             state[56] = state[23];
             state[23] = temp;
+        }
+    }
+
+    /**
+     * Applies an Ls move "times" times
+     *
+     * @param times
+     */
+    public void doLs(int times) {
+        int temp;
+        for (int i = 0; i < times; i++) {
+            //Top Triangles
+            temp = state[3];
+            state[3] = state[59];
+            state[59] = state[25];
+            state[25] = temp;
+
+            //Right Triangles
+            temp = state[28];
+            state[28] = state[48];
+            state[48] = state[64];
+            state[64] = temp;
+
+            //UB Edges
+            temp = state[2];
+            state[2] = state[60];
+            state[60] = state[21];
+            state[21] = temp;
+
+            //BU Edges
+            temp = state[47];
+            state[47] = state[68];
+            state[68] = state[32];
+            state[32] = temp;
+
+            //UR Edges
+            temp = state[7];
+            state[7] = state[55];
+            state[55] = state[24];
+            state[24] = temp;
+
+            //RU Edges
+            temp = state[29];
+            state[20] = state[52];
+            state[52] = state[65];
+            state[65] = temp;
         }
     }
 
