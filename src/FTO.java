@@ -41,10 +41,14 @@ public class FTO {
                     doRs(2);
                     break;
                 case "Ro":
-                    //TODO: Ro rotation
+                    doR(1);
+                    doRs(1);
+                    doBL(2);
                     break;
                 case "Ro'":
-                    //TODO: Ro' rotation
+                    doR(2);
+                    doRs(2);
+                    doBL(1);
                     break;
 
                 /**
@@ -211,10 +215,10 @@ public class FTO {
                  * BL-based moves and rotations
                  */
                 case "BL":
-                    //Do BL move
+                    doBL(1);
                     break;
                 case "BL'":
-                    //Do BL' move
+                    doBL(2);
                     break;
                 case "BLw":
                     //Do BLw move
@@ -228,7 +232,7 @@ public class FTO {
                 case "BLo'":
                     //Do BLo' rotation
                     break;
-                    
+
                 default:
                     throw new IllegalArgumentException("The move " + moves[i] + " is not supported.");
             }
@@ -333,6 +337,65 @@ public class FTO {
             state[12] = state[66];
             state[66] = state[46];
             state[46] = temp;
+        }
+    }
+
+    public void doBL(int times) {
+        int temp;
+        for (int i = 0; i < times; i++) {
+            //Top Corners
+            temp = state[0];
+            state[0] = state[44];
+            state[44] = state[22];
+            state[22] = temp;
+
+            //Back Corners
+            temp = state[49];
+            state[49] = state[71];
+            state[71] = state[17];
+            state[17] = temp;
+
+            //Bottom Corners
+            temp = state[54];
+            state[54] = state[58];
+            state[58] = state[62];
+            state[62] = temp;
+
+            //Front Corners
+            temp = state[9];
+            state[9] = state[53];
+            state[53] = state[63];
+            state[63] = temp;
+
+            //Front Edges
+            temp = state[14];
+            state[14] = state[52];
+            state[52] = state[68];
+            state[68] = temp;
+
+            //Left Edges
+            temp = state[55];
+            state[55] = state[60];
+            state[60] = state[57];
+            state[57] = temp;
+
+            //Left Triangles
+            temp = state[56];
+            state[56] = state[59];
+            state[59] = state[61];
+            state[61] = temp;
+
+            //Top Triangles
+            temp = state[10];
+            state[10] = state[51];
+            state[51] = state[64];
+            state[64] = temp;
+
+            //Bottom Triangles
+            temp = state[15];
+            state[15] = state[48];
+            state[48] = state[69];
+            state[69] = temp;
         }
     }
 
