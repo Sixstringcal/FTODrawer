@@ -42,6 +42,10 @@ public class FTO {
         }
     }
 
+    public String[] getState() {
+        return state;
+    }
+
     /**
      * Applies a set of moves to the FTO
      *
@@ -61,8 +65,7 @@ public class FTO {
                 case "R'":
                     doR(2);
                     break;
-                case :
-                    "BLs'":
+                case "BLs'":
                 case "Rs":
                     doRs(1);
                     break;
@@ -292,7 +295,7 @@ public class FTO {
      * @param times
      */
     public void doR(int times) {
-        int temp;
+        String temp;
         for (int i = 0; i < times; i++) {
 
             //Top Corners
@@ -326,7 +329,7 @@ public class FTO {
             state[37] = temp;
 
             //R Edges
-            tmep = state[29];
+            temp = state[29];
             state[29] = state[32];
             state[32] = state[34];
             state[34] = temp;
@@ -357,7 +360,7 @@ public class FTO {
      * @param times
      */
     public void doRs(int times) {
-        int temp;
+        String temp;
         for (int i = 0; i < times; i++) {
             //UB Edges
             temp = state[2];
@@ -403,7 +406,7 @@ public class FTO {
      * @param times
      */
     public void doBL(int times) {
-        int temp;
+        String temp;
         for (int i = 0; i < times; i++) {
             //Top Corners
             temp = state[0];
@@ -467,7 +470,7 @@ public class FTO {
      * @param times
      */
     public void doU(int times) {
-        int temp;
+        String temp;
         for (int i = 0; i < times; i++) {
             //Top Corners
             temp = state[0];
@@ -531,7 +534,7 @@ public class FTO {
      * @param times
      */
     public void doUs(int times) {
-        int temp;
+        String temp;
         for (int i = 0; i < times; i++) {
             //Front Triangles
             temp = state[20];
@@ -577,7 +580,7 @@ public class FTO {
      * @param times
      */
     public void doD(int times) {
-        int temp;
+        String temp;
         for (int i = 0; i < times; i++) {
             //Bottom Corners
             temp = state[63];
@@ -640,8 +643,8 @@ public class FTO {
      *
      * @param times
      */
-    public doL(int times) {
-        int temp;
+    public void doL(int times) {
+        String temp;
         for (int i = 0; i < times; i++) {
             //U Corners
             temp = state[0];
@@ -687,8 +690,8 @@ public class FTO {
 
             //Top Back Left Triangles
             temp = state[1];
-            state[1] = state[62];
-            state[62] = state[20];
+            state[1] = state[61];
+            state[61] = state[20];
             state[20] = temp;
 
             //Top Front Triangles
@@ -705,7 +708,7 @@ public class FTO {
      * @param times
      */
     public void doLs(int times) {
-        int temp;
+        String temp;
         for (int i = 0; i < times; i++) {
             //Top Triangles
             temp = state[3];
@@ -751,7 +754,7 @@ public class FTO {
      * @param times
      */
     public void doBR(int times) {
-        int temp;
+        String temp;
         for (int i = 0; i < times; i++) {
             //Top Corners
             temp = state[4];
@@ -815,7 +818,7 @@ public class FTO {
      * @param times
      */
     public void doF(int times) {
-        int temp;
+        String temp;
         for (int i = 0; i < times; i++) {
             //Top Corners
             temp = state[8];
@@ -879,7 +882,7 @@ public class FTO {
      * @param times
      */
     public void doFs(int times) {
-        int temp;
+        String temp;
         for (int i = 0; i < times; i++) {
             //Top Triangles
             temp = state[6];
@@ -925,7 +928,7 @@ public class FTO {
      * @param times
      */
     public void doB(int times) {
-        int temp;
+        String temp;
         for (int i = 0; i < times; i++) {
             //UBL Corners
             temp = state[0];
