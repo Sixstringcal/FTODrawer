@@ -168,29 +168,59 @@ public class FTO {
         int temp;
         for (int i = 0; i < times; i++) {
 
-            //Top Corner
+            //Top Corners
             temp = state[4];
             state[4] = state[18];
             state[18] = state[40];
             state[40] = temp;
 
-            //Back Corner
+            //Back Corners
             temp = state[45];
             state[45] = state[13];
             state[13] = state[67];
             state[67] = temp;
 
-            //Right Corner
+            //Right Corners
             temp = state[31];
             state[31] = state[27];
             state[27] = state[35];
             state[35] = temp;
 
-            //Bottom Corner
+            //Bottom Corners
             temp = state[36];
             state[36] = state[8];
             state[8] = state[26];
             state[26] = temp;
+
+            //U Edges
+            temp = state[7];
+            state[7] = state[21];
+            state[21] = state[37];
+            state[37] = temp;
+
+            //R Edges
+            tmep = state[29];
+            state[29] = state[32];
+            state[32] = state[34];
+            state[34] = temp;
+
+            //Back Triangles
+            temp = state[3];
+            state[3] = state[20];
+            state[20] = state[41];
+            state[41] = temp;
+
+            //Front Triangles
+            temp = state[6];
+            state[6] = state[25];
+            state[25] = state[38];
+            state[38] = temp;
+
+            //Right Triangles
+            temp = state[30];
+            state[30] = state[28];
+            state[28] = state[33];
+            state[33] = temp;
         }
     }
 
