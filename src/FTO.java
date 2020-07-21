@@ -96,11 +96,17 @@ public class FTO {
                     doU(2);
                     doUs(2);
                     break;
+                case "Do'":
                 case "Uo":
-                    //TODO: Uo rotation
+                    doU(1);
+                    doUs(1);
+                    doD(2);
                     break;
+                case "Do":
                 case "Uo'":
-                    //TODO: Uo' rotation
+                    doU(2);
+                    doUs(2);
+                    doD(1);
                     break;
 
                 /**
@@ -169,22 +175,18 @@ public class FTO {
                  * D-based moves and rotations
                  */
                 case "D":
-                    //Do D move
+                    doD(1);
                     break;
                 case "D'":
-                    //Do D' move
+                    doD(2);
                     break;
                 case "Dw":
-                    //Do Dw move
+                    doD(1);
+                    doUs(2);
                     break;
                 case "Dw'":
-                    //Do Dw' move
-                    break;
-                case "Do":
-                    //Do Do rotation
-                    break;
-                case "Do'":
-                    //Do Do' rotation
+                    doD(2);
+                    doUs(1);
                     break;
 
                 /**
@@ -241,10 +243,12 @@ public class FTO {
                     doBL(2);
                     break;
                 case "BLw":
-                    //Do BLw move
+                    doBL(1);
+                    doRs(2);
                     break;
                 case "BLw'":
-                    //Do BLw' move
+                    doBL(2);
+                    doRs(1);
                     break;
 
                 default:
@@ -494,11 +498,12 @@ public class FTO {
 
     /**
      * Applies a Us move "times" times
+     *
      * @param times
      */
-    public void doUs(int times){
+    public void doUs(int times) {
         int temp;
-        for(int i = 0; i < times; i++){
+        for (int i = 0; i < times; i++) {
             //Front Triangles
             temp = state[20];
             state[20] = state[56];
@@ -534,6 +539,70 @@ public class FTO {
             state[16] = state[52];
             state[52] = state[43];
             state[43] = temp;
+        }
+    }
+
+    /**
+     * Applies a D move "times" times
+     *
+     * @param times
+     */
+    public void doD(int times) {
+        int temp;
+        for (int i = 0; i < times; i++) {
+            //Bottom Corners
+            temp = state[63];
+            state[63] = state[71];
+            state[71] = state[67];
+            state[67] = temp;
+
+            //Up Corners
+            temp = state[17];
+            state[17] = state[53];
+            state[53] = state[35];
+            state[35] = temp;
+
+            //Right Corners
+            temp = state[22];
+            state[22] = state[58];
+            state[58] = state[40];
+            state[40] = temp;
+
+            //Left Corners
+            temp = state[62];
+            state[62] = state[44];
+            state[44] = state[26];
+            state[26] = temp;
+
+            //Bottom Edges
+            temp = state[65];
+            state[65] = state[68];
+            state[68] = state[70];
+            state[70] = temp;
+
+            //Outer Edges
+            temp = state[24];
+            state[24] = state[60];
+            state[60] = state[42];
+            state[42] = temp;
+
+            //Bottom Triangles
+            temp = state[64];
+            state[64] = state[69];
+            state[69] = state[66];
+            state[66] = temp;
+
+            //Right Triangles
+            temp = state[25];
+            state[25] = state[61];
+            state[61] = state[43];
+            state[43] = temp;
+
+            //Left Triangles
+            temp = state[23];
+            state[23] = state[59];
+            state[59] = state[41];
+            state[41] = temp;
         }
     }
 
