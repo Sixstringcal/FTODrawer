@@ -40,11 +40,13 @@ public class FTO {
                     doR(2);
                     doRs(2);
                     break;
+                case "BLo'":
                 case "Ro":
                     doR(1);
                     doRs(1);
                     doBL(2);
                     break;
+                case "BLo":
                 case "Ro'":
                     doR(2);
                     doRs(2);
@@ -55,10 +57,10 @@ public class FTO {
                  * U-based moves and rotations
                  */
                 case "U":
-                    //TODO: U move
+                    doU(1);
                     break;
                 case "U'":
-                    //TODO: U' move
+                    doU(2);
                     break;
                 case "Ds'":
                 case "E'":
@@ -226,12 +228,6 @@ public class FTO {
                 case "BLw'":
                     //Do BLw' move
                     break;
-                case "BLo":
-                    //Do BLo rotation
-                    break;
-                case "BLo'":
-                    //Do BLo' rotation
-                    break;
 
                 default:
                     throw new IllegalArgumentException("The move " + moves[i] + " is not supported.");
@@ -396,6 +392,13 @@ public class FTO {
             state[15] = state[48];
             state[48] = state[69];
             state[69] = temp;
+        }
+    }
+
+    public void doU(int times){
+        int temp;
+        for(int i = 0; i < times; i++){
+
         }
     }
 
