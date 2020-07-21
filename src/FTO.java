@@ -7,7 +7,7 @@ public class FTO {
      * Face Position: indexed 0-8 starting top left piece as if looking at face going left to right, top to bottom
      * Piece Number (or state[x]) = (Face Index * 9) + Face Position
      */
-    private String[] state = new String[72];
+    private int[] state = new int[72];
 
 
     /**
@@ -17,32 +17,32 @@ public class FTO {
 
         //Creates a solved FTO.
         for (int i = 0; i < 9; i++) {
-            state[i] = "U";
+            state[i] = 0;
         }
         for (int i = 9; i < 18; i++) {
-            state[i] = "L";
+            state[i] = 1;
         }
         for (int i = 18; i < 27; i++) {
-            state[i] = "F";
+            state[i] = 2;
         }
         for (int i = 27; i < 36; i++) {
-            state[i] = "R";
+            state[i] = 3;
         }
         for (int i = 36; i < 45; i++) {
-            state[i] = "BR";
+            state[i] = 4;
         }
         for (int i = 45; i < 54; i++) {
-            state[i] = "B";
+            state[i] = 5;
         }
         for (int i = 54; i < 63; i++) {
-            state[i] = "BL";
+            state[i] = 6;
         }
         for (int i = 63; i < 72; i++) {
-            state[i] = "D";
+            state[i] = 7;
         }
     }
 
-    public String[] getState() {
+    public int[] getState() {
         return state;
     }
 
@@ -295,7 +295,7 @@ public class FTO {
      * @param times
      */
     public void doR(int times) {
-        String temp;
+        int temp;
         for (int i = 0; i < times; i++) {
 
             //Top Corners
@@ -360,7 +360,7 @@ public class FTO {
      * @param times
      */
     public void doRs(int times) {
-        String temp;
+        int temp;
         for (int i = 0; i < times; i++) {
             //UB Edges
             temp = state[2];
@@ -406,7 +406,7 @@ public class FTO {
      * @param times
      */
     public void doBL(int times) {
-        String temp;
+        int temp;
         for (int i = 0; i < times; i++) {
             //Top Corners
             temp = state[0];
@@ -470,7 +470,7 @@ public class FTO {
      * @param times
      */
     public void doU(int times) {
-        String temp;
+        int temp;
         for (int i = 0; i < times; i++) {
             //Top Corners
             temp = state[0];
@@ -534,7 +534,7 @@ public class FTO {
      * @param times
      */
     public void doUs(int times) {
-        String temp;
+        int temp;
         for (int i = 0; i < times; i++) {
             //Front Triangles
             temp = state[20];
@@ -580,7 +580,7 @@ public class FTO {
      * @param times
      */
     public void doD(int times) {
-        String temp;
+        int temp;
         for (int i = 0; i < times; i++) {
             //Bottom Corners
             temp = state[63];
@@ -644,7 +644,7 @@ public class FTO {
      * @param times
      */
     public void doL(int times) {
-        String temp;
+        int temp;
         for (int i = 0; i < times; i++) {
             //U Corners
             temp = state[0];
@@ -708,7 +708,7 @@ public class FTO {
      * @param times
      */
     public void doLs(int times) {
-        String temp;
+        int temp;
         for (int i = 0; i < times; i++) {
             //Top Triangles
             temp = state[3];
@@ -754,7 +754,7 @@ public class FTO {
      * @param times
      */
     public void doBR(int times) {
-        String temp;
+        int temp;
         for (int i = 0; i < times; i++) {
             //Top Corners
             temp = state[4];
@@ -818,7 +818,7 @@ public class FTO {
      * @param times
      */
     public void doF(int times) {
-        String temp;
+        int temp;
         for (int i = 0; i < times; i++) {
             //Top Corners
             temp = state[8];
@@ -882,7 +882,7 @@ public class FTO {
      * @param times
      */
     public void doFs(int times) {
-        String temp;
+        int temp;
         for (int i = 0; i < times; i++) {
             //Top Triangles
             temp = state[6];
@@ -928,7 +928,7 @@ public class FTO {
      * @param times
      */
     public void doB(int times) {
-        String temp;
+        int temp;
         for (int i = 0; i < times; i++) {
             //UBL Corners
             temp = state[0];
