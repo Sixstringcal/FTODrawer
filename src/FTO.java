@@ -113,10 +113,10 @@ public class FTO {
                  * L-based moves and rotations
                  */
                 case "L":
-                    //Do L move
+                    doL(1);
                     break;
                 case "L'":
-                    //Do L' move
+                    doL(2);
                     break;
                 case "BRs'":
                 case "Ls":
@@ -603,6 +603,70 @@ public class FTO {
             state[23] = state[59];
             state[59] = state[41];
             state[41] = temp;
+        }
+    }
+
+    /**
+     * Applies an L move "times" times
+     *
+     * @param times
+     */
+    public doL(int times) {
+        int temp;
+        for (int i = 0; i < times; i++) {
+            //U Corners
+            temp = state[0];
+            state[0] = state[62];
+            state[62] = state[18];
+            state[18] = temp;
+
+            //Bottom Corners
+            temp = state[54];
+            state[54] = state[22];
+            state[22] = state[8];
+            state[8] = temp;
+
+            //Back Corners
+            temp = state[49];
+            state[49] = state[63];
+            state[63] = state[27];
+            state[27] = temp;
+
+            //Frontish Corners
+            temp = state[9];
+            state[9] = state[17];
+            state[17] = state[13];
+            state[13] = temp;
+
+            //Left Edges
+            temp = state[11];
+            state[11] = state[14];
+            state[14] = state[16];
+            state[16] = temp;
+
+            //Right Edges
+            temp = state[5];
+            state[5] = state[57];
+            state[57] = state[19];
+            state[19] = temp;
+
+            //Left Triangles
+            temp = state[10];
+            state[10] = state[15];
+            state[15] = state[12];
+            state[12] = temp;
+
+            //Top Back Left Triangles
+            temp = state[1];
+            state[1] = state[62];
+            state[62] = state[20];
+            state[20] = temp;
+
+            //Top Front Triangles
+            temp = state[6];
+            state[6] = state[56];
+            state[56] = state[23];
+            state[23] = temp;
         }
     }
 
