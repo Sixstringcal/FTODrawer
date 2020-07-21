@@ -81,18 +81,20 @@ public class FTO {
                 case "Ds'":
                 case "E'":
                 case "Us":
-                    //TODO: Us move
+                    doUs(1);
                     break;
                 case "Ds":
                 case "E":
                 case "Us'":
-                    //TODO: Us' move
+                    doUs(2);
                     break;
                 case "Uw":
-                    //TODO: Uw move
+                    doU(1);
+                    doUs(1);
                     break;
                 case "Uw'":
-                    //TODO: Uw' move
+                    doU(2);
+                    doUs(2);
                     break;
                 case "Uo":
                     //TODO: Uo rotation
@@ -487,6 +489,51 @@ public class FTO {
             state[10] = state[28];
             state[28] = state[46];
             state[46] = temp;
+        }
+    }
+
+    /**
+     * Applies a Us move "times" times
+     * @param times
+     */
+    public void doUs(int times){
+        int temp;
+        for(int i = 0; i < times; i++){
+            //Front Triangles
+            temp = state[20];
+            state[20] = state[56];
+            state[56] = state[38];
+            state[38] = temp;
+
+            //Left Triangles
+            temp = state[15];
+            state[15] = state[51];
+            state[51] = state[33];
+            state[33] = temp;
+
+            //FR Edges
+            temp = state[21];
+            state[21] = state[57];
+            state[57] = state[39];
+            state[39] = temp;
+
+            //RF Edges
+            temp = state[41];
+            state[41] = state[14];
+            state[14] = state[50];
+            state[50] = temp;
+
+            //FL Edges
+            temp = state[19];
+            state[19] = state[55];
+            state[55] = state[37];
+            state[37] = temp;
+
+            //LF Edges
+            temp = state[16];
+            state[16] = state[52];
+            state[52] = state[43];
+            state[43] = temp;
         }
     }
 
