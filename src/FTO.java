@@ -7,7 +7,7 @@ public class FTO {
      * Face Position: indexed 0-8 starting top left piece as if looking at face going left to right, top to bottom
      * Piece Number (or state[x]) = (Face Index * 9) + Face Position
      */
-    private int[] state = new int[72];
+    private String[] state = new String[72];
 
 
     /**
@@ -16,8 +16,29 @@ public class FTO {
     public FTO() {
 
         //Creates a solved FTO.
-        for (int i = 0; i < 72; i++) {
-            state[i] = i;
+        for (int i = 0; i < 9; i++) {
+            state[i] = "U";
+        }
+        for (int i = 9; i < 18; i++) {
+            state[i] = "L";
+        }
+        for (int i = 18; i < 27; i++) {
+            state[i] = "F";
+        }
+        for (int i = 27; i < 36; i++) {
+            state[i] = "R";
+        }
+        for (int i = 36; i < 45; i++) {
+            state[i] = "BR";
+        }
+        for (int i = 45; i < 54; i++) {
+            state[i] = "B";
+        }
+        for (int i = 54; i < 63; i++) {
+            state[i] = "BL";
+        }
+        for (int i = 63; i < 72; i++) {
+            state[i] = "D";
         }
     }
 
