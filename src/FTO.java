@@ -151,10 +151,10 @@ public class FTO {
                  * F-based moves and rotations
                  */
                 case "F":
-                    //Do F move
+                    doF(1);
                     break;
                 case "F'":
-                    //Do F' move
+                    doF(2);
                     break;
                 case "Bs'":
                 case "S":
@@ -172,9 +172,11 @@ public class FTO {
                 case "Fw'":
                     //Do Fw' move
                     break;
+                case "Bo'":
                 case "Fo":
                     //Do Fo rotation
                     break;
+                case "Bo":
                 case "Fo'":
                     //Do Fo' rotation
                     break;
@@ -211,12 +213,6 @@ public class FTO {
                     break;
                 case "Bw'":
                     //Do Bw' move
-                    break;
-                case "Bo":
-                    //Do Bo rotation
-                    break;
-                case "Bo'":
-                    //Do Bo' rotation
                     break;
 
                 /**
@@ -781,6 +777,70 @@ public class FTO {
             state[33] = state[69];
             state[69] = state[46];
             state[46] = temp;
+        }
+    }
+
+    /**
+     * Applies F "times" times
+     *
+     * @param times
+     */
+    public void doF(int times) {
+        int temp;
+        for (int i = 0; i < times; i++) {
+            //Top Corners
+            temp = state[8];
+            state[8] = state[62];
+            state[62] = state[40];
+            state[40] = temp;
+
+            //Bottom Corners
+            temp = state[18];
+            state[18] = state[22];
+            state[22] = state[26];
+            state[26] = temp;
+
+            //Right Corners
+            temp = state[27];
+            state[27] = state[17];
+            state[17] = state[67];
+            state[67] = temp;
+
+            //Left Corners
+            temp = state[13];
+            state[13] = state[63];
+            state[63] = state[35];
+            state[35] = temp;
+
+            //Front Edges
+            temp = state[19];
+            state[19] = state[24];
+            state[24] = state[21];
+            state[21] = temp;
+
+            //Outer Edges
+            temp = state[16];
+            state[16] = state[65];
+            state[65] = state[32];
+            state[32] = temp;
+
+            //Front Triangles
+            temp = state[20];
+            state[20] = state[23];
+            state[23] = state[25];
+            state[25] = temp;
+
+            //Outer Right Top Triangles
+            temp = state[28];
+            state[28] = state[15];
+            state[15] = state[66];
+            state[66] = temp;
+
+            //Outer Left Top Triangles
+            temp = state[12];
+            state[12] = state[64];
+            state[64] = state[34];
+            state[34] = temp;
         }
     }
 
