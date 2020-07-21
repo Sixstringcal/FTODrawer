@@ -1,7 +1,18 @@
 public class FTO {
 
+    /**
+     * The state of the puzzle.
+     * Interpretation:
+     * Face Order (indexed starting at 0): U, L, F, R, BR, B, BL, D
+     * Face Position: indexed 0-8 starting top left piece as if looking at face going left to right, top to bottom
+     * Piece Number (or state[x]) = (Face Index * 9) + Face Position
+     */
     private int[] state = new int[72];
 
+
+    /**
+     * Creates the FTO
+     */
     public FTO() {
 
         //Creates a solved FTO.
@@ -10,6 +21,11 @@ public class FTO {
         }
     }
 
+    /**
+     * Applies a set of moves to the FTO
+     *
+     * @param scramble
+     */
     public void doMoves(String scramble) {
         String[] moves = scramble.split(" ");
         for (int i = 0; i < moves.length; i++) {
@@ -235,6 +251,11 @@ public class FTO {
         }
     }
 
+    /**
+     * Applies a R move "times" times
+     *
+     * @param times
+     */
     public void doR(int times) {
         int temp;
         for (int i = 0; i < times; i++) {
@@ -295,6 +316,11 @@ public class FTO {
         }
     }
 
+    /**
+     * Applies an Rs move "times" times
+     *
+     * @param times
+     */
     public void doRs(int times) {
         int temp;
         for (int i = 0; i < times; i++) {
@@ -336,6 +362,11 @@ public class FTO {
         }
     }
 
+    /**
+     * Applies a BL move "times" times
+     *
+     * @param times
+     */
     public void doBL(int times) {
         int temp;
         for (int i = 0; i < times; i++) {
@@ -395,10 +426,67 @@ public class FTO {
         }
     }
 
-    public void doU(int times){
+    /**
+     * Applies a U move "times" times
+     *
+     * @param times
+     */
+    public void doU(int times) {
         int temp;
-        for(int i = 0; i < times; i++){
+        for (int i = 0; i < times; i++) {
+            //Top Corners
+            temp = state[0];
+            state[0] = state[8];
+            state[8] = state[4];
+            state[4] = temp;
 
+            //Back Corners
+            temp = state[49];
+            state[49] = state[13];
+            state[13] = state[31];
+            state[31] = temp;
+
+            //Bottom Corners
+            temp = state[54];
+            state[54] = state[18];
+            state[18] = state[36];
+            state[36] = temp;
+
+            //Frontish Corners
+            temp = state[9];
+            state[9] = state[27];
+            state[27] = state[45];
+            state[45] = temp;
+
+            //U Edges
+            temp = state[2];
+            state[2] = state[5];
+            state[5] = state[7];
+            state[7] = temp;
+
+            //Outer Edges
+            temp = state[47];
+            state[47] = state[11];
+            state[11] = state[29];
+            state[29] = temp;
+
+            //U Triangles
+            temp = state[1];
+            state[1] = state[6];
+            state[6] = state[3];
+            state[3] = temp;
+
+            //Right Triangles
+            temp = state[12];
+            state[12] = state[30];
+            state[30] = state[48];
+            state[48] = temp;
+
+            //Left Triangles
+            temp = state[10];
+            state[10] = state[28];
+            state[28] = state[46];
+            state[46] = temp;
         }
     }
 
