@@ -253,7 +253,7 @@ public class Main {
                 "<polygon id=\"60\" points=\"48.6,69.4 42.7,75.4 48.6,81.3\"\n" +
                 "\tstyle=\"fill:" + colors[state[60]] + ";stroke:gray;stroke-width:.1\"/>\n" +
                 "<polygon id=\"61\" points=\"48.6,69.4 54.5,75.4 48.6,81.3\"\n" +
-                "\tstyle=\"fill:" + colors[state[61]] + "stroke:gray;stroke-width:.1\"/>\n" +
+                "\tstyle=\"fill:" + colors[state[61]] + ";stroke:gray;stroke-width:.1\"/>\n" +
                 "<polygon id=\"62\" points=\"54.5,75.4 48.6,81.3 54.5,87.2\"\n" +
                 "\tstyle=\"fill:" + colors[state[62]] + ";stroke:gray;stroke-width:.1\"/>\n" +
                 "<polygon id=\"63\" points=\"54.5,87.2 42.7,87.2 48.6,81.3\"\n" +

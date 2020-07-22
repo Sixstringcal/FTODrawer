@@ -871,8 +871,8 @@ public class FTO {
             //Outer Left Top Triangles
             temp = state[12];
             state[12] = state[64];
-            state[64] = state[34];
-            state[34] = temp;
+            state[64] = state[33];
+            state[33] = temp;
         }
     }
 
