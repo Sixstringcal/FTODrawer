@@ -11,6 +11,8 @@ public class Main {
     public static void main(String[] args) {
         FTO fto = new FTO();
         Scanner scanner = new Scanner(System.in);
+        System.out.println("Full image or L3T?  Type 1 for full image and 2 for L3T");
+        String imageType = scanner.nextLine();
         System.out.println("Please enter a scramble");
         String input = scanner.nextLine();
         fto.doMoves(input);
@@ -19,7 +21,12 @@ public class Main {
 
         try {
             FileWriter myWriter = new FileWriter(scanner.nextLine() + ".svg");
-            myWriter.write(getSVG(fto.getState()));
+            if(imageType.equals("1")){
+                myWriter.write(drawScramble(fto.getState()));
+            }
+            else {
+                myWriter.write(getSVG(fto.getState()));
+            }
             myWriter.close();
             System.out.println("Success!");
         } catch (IOException e) {
@@ -102,6 +109,204 @@ public class Main {
                 "<polygon id=\"56\" points=\"10.9 18.3177 8.4 22.6478 5.9 18.3177\"\n" +
                 "\tstyle=\"fill:" + colors[state[56]] + ";stroke:gray;stroke-width:.5\"/>\n" +
                 "\n" +
+                "</svg>\n";
+        return returnedString;
+    }
+
+    public static String drawScramble(int state[]){
+        String returnedString = "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n" +
+                "<svg version=\"1.1\" id=\"Layer_1\" xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=\"http://www.w3.org/1999/xlink\" x=\"0px\" y=\"0px\"\n" +
+                "\t viewBox=\"0 0 98 98\" style=\"enable-background:new 0 0 98 98;\" xml:space=\"preserve\">\n" +
+                "<style type=\"text/css\">\n" +
+                "\t.st0{fill:#FFFFFF;stroke:#808080;stroke-width:5;}\n" +
+                "\t.st1{fill:#FFFFFF;stroke:#808080;stroke-width:0.1;}\n" +
+                "</style>\n" +
+                "<polygon\n" +
+                "\tid=\"outer_square1\"\n" +
+                "\tpoints=\"19,9.6 19,45.1 54.5,45.1 54.5,9.6\"\n" +
+                "\tstyle=\"fill:white;stroke:gray;stroke-width:2.5\"/>\n" +
+                "<polygon\n" +
+                "\tid=\"outer_square2\"\n" +
+                "\tpoints=\"19,51.7 54.5,51.7 54.5,87.2 19,87.2\"\n" +
+                "\tstyle=\"fill:white;stroke:gray;stroke-width:2.5\"/>\n" +
+                "\n" +
+                "<polygon id=\"0\" points=\"19,9.6 30.8,9.6 24.9,15.5\"\n" +
+                "\tstyle=\"fill:" + colors[state[0]] + ";stroke:gray;stroke-width:.1\"/>\n" +
+                "<polygon id=\"1\" points=\"30.8,9.6 24.9,15.5 36.8,15.5\"\n" +
+                "\tstyle=\"fill:" + colors[state[1]] + ";stroke:gray;stroke-width:.1\"/>\n" +
+                "<polygon id=\"2\" points=\"30.8,9.6 36.8,15.5 42.7,9.6 \"\n" +
+                "\tstyle=\"fill:" + colors[state[2]] + ";stroke:gray;stroke-width:.1\"/>\n" +
+                "<polygon id=\"3\" points=\"36.8,15.5 42.7,9.6 48.6,15.5\"\n" +
+                "\tstyle=\"fill:" + colors[state[3]] + ";stroke:gray;stroke-width:.1\"/>\n" +
+                "<polygon id=\"4\" points=\"42.7,9.6 48.6,15.5 54.5,9.6\"\n" +
+                "\tstyle=\"fill:" + colors[state[4]] + ";stroke:gray;stroke-width:.1\"/>\n" +
+                "<polygon id=\"5\" points=\"24.9,15.5 30.8,21.4 36.8,15.5\"\n" +
+                "\tstyle=\"fill:" + colors[state[5]] + ";stroke:gray;stroke-width:.1\"/>\n" +
+                "<polygon id=\"6\" points=\"30.8,21.4 36.8,15.5 42.7,21.4\"\n" +
+                "\tstyle=\"fill:" + colors[state[6]] + ";stroke:gray;stroke-width:.1\"/>\n" +
+                "<polygon id=\"7\" points=\"36.8,15.5 42.7,21.4 48.6,15.5\"\n" +
+                "\tstyle=\"fill:" + colors[state[7]] + ";stroke:gray;stroke-width:.1\"/>\n" +
+                "<polygon id=\"8\" points=\"30.8,21.4 36.8,27.3 42.7,21.4\"\n" +
+                "\tstyle=\"fill:" + colors[state[8]] + ";stroke:gray;stroke-width:.1\"/>\n" +
+                "<polygon id=\"9\" points=\"19,21.4 24.9,15.5 19,9.6\"\n" +
+                "\tstyle=\"fill:" + colors[state[9]] + ";stroke:gray;stroke-width:.1\"/>\n" +
+                "<polygon id=\"10\" points=\"24.9,27.3 19,21.4 24.9,15.5\"\n" +
+                "\tstyle=\"fill:" + colors[state[10]] + ";stroke:gray;stroke-width:.1\"/>\n" +
+                "<polygon id=\"11\" points=\"24.9,27.3 30.8,21.4 24.9,15.5\"\n" +
+                "\tstyle=\"fill:" + colors[state[11]] + ";stroke:gray;stroke-width:.1\"/>\n" +
+                "<polygon id=\"12\" points=\"30.8,33.3 24.9,27.3 30.8,21.4\"\n" +
+                "\tstyle=\"fill:" + colors[state[12]] + ";stroke:gray;stroke-width:.1\"/>\n" +
+                "<polygon id=\"13\" points=\"30.8,33.3 36.8,27.3 30.8,21.4\"\n" +
+                "\tstyle=\"fill:" + colors[state[13]] + ";stroke:gray;stroke-width:.1\"/>\n" +
+                "<polygon id=\"14\" points=\"19,33.3 24.9,27.3 19,21.4\"\n" +
+                "\tstyle=\"fill:" + colors[state[14]] + ";stroke:gray;stroke-width:.1\"/>\n" +
+                "<polygon id=\"15\" points=\"19,33.3 24.9,39.2 24.9,27.3\"\n" +
+                "\tstyle=\"fill:" + colors[state[15]] + ";stroke:gray;stroke-width:.1\"/>\n" +
+                "<polygon id=\"16\" points=\"24.9,39.2 30.8,33.3 24.9,27.3\"\n" +
+                "\tstyle=\"fill:" + colors[state[16]] + ";stroke:gray;stroke-width:.1\"/>\n" +
+                "<polygon id=\"17\" points=\"19,45.1 19,33.3 24.9,39.2\"\n" +
+                "\tstyle=\"fill:" + colors[state[17]] + ";stroke:gray;stroke-width:.1\"/>\n" +
+                "<polygon id=\"18\" points=\"42.7,33.3 36.8,27.3 30.8,33.3\"\n" +
+                "\tstyle=\"fill:" + colors[state[18]] + ";stroke:gray;stroke-width:.1\"/>\n" +
+                "<polygon id=\"19\" points=\"36.8,39.2 30.8,33.3 24.9,39.2\"\n" +
+                "\tstyle=\"fill:" + colors[state[19]] + ";stroke:gray;stroke-width:.1\"/>\n" +
+                "<polygon id=\"20\" points=\"42.7,33.3 36.8,39.2 30.8,33.3\"\n" +
+                "\tstyle=\"fill:" + colors[state[20]] + ";stroke:gray;stroke-width:.1\"/>\n" +
+                "<polygon id=\"21\" points=\"48.6,39.2 42.7,33.3 36.8,39.2\"\n" +
+                "\tstyle=\"fill:" + colors[state[21]] + ";stroke:gray;stroke-width:.1\"/>\n" +
+                "<polygon id=\"22\" points=\"30.8,45.1 24.9,39.2 19,45.1\"\n" +
+                "\tstyle=\"fill:" + colors[state[22]] + ";stroke:gray;stroke-width:.1\"/>\n" +
+                "<polygon id=\"23\" points=\"36.8,39.2 30.8,45.1 24.9,39.2\"\n" +
+                "\tstyle=\"fill:" + colors[state[23]] + ";stroke:gray;stroke-width:.1\"/>\n" +
+                "<polygon id=\"24\" points=\"42.7,45.1 36.8,39.2 30.8,45.1\"\n" +
+                "\tstyle=\"fill:" + colors[state[24]] + ";stroke:gray;stroke-width:.1\"/>\n" +
+                "<polygon id=\"25\" points=\"42.7,45.1 48.6,39.2 36.8,39.2\"\n" +
+                "\tstyle=\"fill:" + colors[state[25]] + ";stroke:gray;stroke-width:.1\"/>\n" +
+                "<polygon id=\"26\" points=\"54.5,45.1 42.7,45.1 48.6,39.2\"\n" +
+                "\tstyle=\"fill:" + colors[state[26]] + ";stroke:gray;stroke-width:.1\"/>\n" +
+                "<polygon id=\"27\" points=\"42.7,21.4 36.8,27.3 42.7,33.3\"\n" +
+                "\tstyle=\"fill:" + colors[state[27]] + ";stroke:gray;stroke-width:.1\"/>\n" +
+                "<polygon id=\"28\" points=\"42.7,21.4 48.6,27.3 42.7,33.3\"\n" +
+                "\tstyle=\"fill:" + colors[state[28]] + ";stroke:gray;stroke-width:.1\"/>\n" +
+                "<polygon id=\"29\" points=\"48.6,15.5 42.7,21.4 48.6,27.3\"\n" +
+                "\tstyle=\"fill:" + colors[state[29]] + ";stroke:gray;stroke-width:.1\"/>\n" +
+                "<polygon id=\"30\" points=\"54.5,21.4 48.6,15.5 48.6,27.3\"\n" +
+                "\tstyle=\"fill:" + colors[state[30]] + ";stroke:gray;stroke-width:.1\"/>\n" +
+                "<polygon id=\"31\" points=\"54.5,9.6 54.5,21.4 48.6,15.5\"\n" +
+                "\tstyle=\"fill:" + colors[state[31]] + ";stroke:gray;stroke-width:.1\"/>\n" +
+                "<polygon id=\"32\" points=\"48.6,27.3 42.7,33.3 48.6,39.2 \"\n" +
+                "\tstyle=\"fill:" + colors[state[32]] + ";stroke:gray;stroke-width:.1\"/>\n" +
+                "<polygon id=\"33\" points=\"48.6,27.3 54.5,33.3 48.6,39.2\"\n" +
+                "\tstyle=\"fill:" + colors[state[33]] + ";stroke:gray;stroke-width:.1\"/>\n" +
+                "<polygon id=\"34\" points=\"54.5,21.4 48.6,27.3 54.5,33.3\"\n" +
+                "\tstyle=\"fill:" + colors[state[34]] + ";stroke:gray;stroke-width:.1\"/>\n" +
+                "<polygon id=\"35\" points=\"54.5,33.3 48.6,39.2 54.5,45.1\"\n" +
+                "\tstyle=\"fill:" + colors[state[35]] + ";stroke:gray;stroke-width:.1\"/>\n" +
+                "<polygon id=\"36\" points=\"19,63.5 24.9,57.6 19,51.7\"\n" +
+                "\tstyle=\"fill:" + colors[state[36]] + ";stroke:gray;stroke-width:.1\"/>\n" +
+                "<polygon id=\"37\" points=\"19,75.4 24.9,69.4 19,63.5\"\n" +
+                "\tstyle=\"fill:" + colors[state[37]] + ";stroke:gray;stroke-width:.1\"/>\n" +
+                "<polygon id=\"38\" points=\"24.9,69.4 19,63.5 24.9,57.6\"\n" +
+                "\tstyle=\"fill:" + colors[state[38]] + ";stroke:gray;stroke-width:.1\"/>\n" +
+                "<polygon id=\"39\" points=\"24.9,69.4 30.8,63.5 24.9,57.6\"\n" +
+                "\tstyle=\"fill:" + colors[state[39]] + ";stroke:gray;stroke-width:.1\"/>\n" +
+                "<polygon id=\"40\" points=\"19,87.2 19,75.4 24.9,81.3\"\n" +
+                "\tstyle=\"fill:" + colors[state[40]] + ";stroke:gray;stroke-width:.1\"/>\n" +
+                "<polygon id=\"41\" points=\"19,75.4 24.9,81.3 24.9,69.4\"\n" +
+                "\tstyle=\"fill:" + colors[state[41]] + ";stroke:gray;stroke-width:.1\"/>\n" +
+                "<polygon id=\"42\" points=\"24.9,81.3 30.8,75.4 24.9,69.4\"\n" +
+                "\tstyle=\"fill:" + colors[state[42]] + ";stroke:gray;stroke-width:.1\"/>\n" +
+                "<polygon id=\"43\" points=\"30.8,75.4 24.9,69.4 30.8,63.5\"\n" +
+                "\tstyle=\"fill:" + colors[state[43]] + ";stroke:gray;stroke-width:.1\"/>\n" +
+                "<polygon id=\"44\" points=\"30.8,75.4 36.8,69.4 30.8,63.5\"\n" +
+                "\tstyle=\"fill:" + colors[state[44]] + ";stroke:gray;stroke-width:.1\"/>\n" +
+                "<polygon id=\"45\" points=\"19,51.7 30.8,51.7 24.9,57.6\"\n" +
+                "\tstyle=\"fill:" + colors[state[45]] + ";stroke:gray;stroke-width:.1\"/>\n" +
+                "<polygon id=\"46\" points=\"30.8,51.7 24.9,57.6 36.8,57.6\"\n" +
+                "\tstyle=\"fill:" + colors[state[46]] + ";stroke:gray;stroke-width:.1\"/>\n" +
+                "<polygon id=\"47\" points=\"30.8,51.7 36.8,57.6 42.7,51.7\"\n" +
+                "\tstyle=\"fill:" + colors[state[47]] + ";stroke:gray;stroke-width:.1\"/>\n" +
+                "<polygon id=\"48\" points=\"36.8,57.6 42.7,51.7 48.6,57.6\"\n" +
+                "\tstyle=\"fill:" + colors[state[48]] + ";stroke:gray;stroke-width:.1\"/>\n" +
+                "<polygon id=\"49\" points=\"42.7,51.7 48.6,57.6 54.5,51.7\"\n" +
+                "\tstyle=\"fill:" + colors[state[49]] + ";stroke:gray;stroke-width:.1\"/>\n" +
+                "<polygon id=\"50\" points=\"24.9,57.6 30.8,63.5 36.8,57.6\"\n" +
+                "\tstyle=\"fill:" + colors[state[50]] + ";stroke:gray;stroke-width:.1\"/>\n" +
+                "<polygon id=\"51\" points=\"30.8,63.5 36.8,57.6 42.7,63.5\"\n" +
+                "\tstyle=\"fill:" + colors[state[51]] + ";stroke:gray;stroke-width:.1\"/>\n" +
+                "<polygon id=\"52\" points=\"36.8,57.6 42.7,63.5 48.6,57.6\"\n" +
+                "\tstyle=\"fill:" + colors[state[52]] + ";stroke:gray;stroke-width:.1\"/>\n" +
+                "<polygon id=\"53\" points=\"30.8,63.5 36.8,69.4 42.7,63.5\"\n" +
+                "\tstyle=\"fill:" + colors[state[53]] + ";stroke:gray;stroke-width:.1\"/>\n" +
+                "<polygon id=\"54\" points=\"54.5,51.7 54.5,63.5 48.6,57.6\"\n" +
+                "\tstyle=\"fill:" + colors[state[54]] + ";stroke:gray;stroke-width:.1\"/>\n" +
+                "<polygon id=\"55\" points=\"48.6,57.6 42.7,63.5 48.6,69.4\"\n" +
+                "\tstyle=\"fill:" + colors[state[55]] + ";stroke:gray;stroke-width:.1\"/>\n" +
+                "<polygon id=\"56\" points=\"54.5,63.5 48.6,57.6 48.6,69.4\"\n" +
+                "\tstyle=\"fill:" + colors[state[56]] + ";stroke:gray;stroke-width:.1\"/>\n" +
+                "<polygon id=\"57\" points=\"54.5,63.5 48.6,69.4 54.5,75.4\"\n" +
+                "\tstyle=\"fill:" + colors[state[57]] + ";stroke:gray;stroke-width:.1\"/>\n" +
+                "<polygon id=\"58\" points=\"42.7,63.5 36.8,69.4 42.7,75.4\"\n" +
+                "\tstyle=\"fill:" + colors[state[58]] + ";stroke:gray;stroke-width:.1\"/>\n" +
+                "<polygon id=\"59\" points=\"42.7,63.5 48.6,69.4 42.7,75.4\"\n" +
+                "\tstyle=\"fill:" + colors[state[59]] + ";stroke:gray;stroke-width:.1\"/>\n" +
+                "<polygon id=\"60\" points=\"48.6,69.4 42.7,75.4 48.6,81.3\"\n" +
+                "\tstyle=\"fill:" + colors[state[60]] + ";stroke:gray;stroke-width:.1\"/>\n" +
+                "<polygon id=\"61\" points=\"48.6,69.4 54.5,75.4 48.6,81.3\"\n" +
+                "\tstyle=\"fill:" + colors[state[61]] + "stroke:gray;stroke-width:.1\"/>\n" +
+                "<polygon id=\"62\" points=\"54.5,75.4 48.6,81.3 54.5,87.2\"\n" +
+                "\tstyle=\"fill:" + colors[state[62]] + ";stroke:gray;stroke-width:.1\"/>\n" +
+                "<polygon id=\"63\" points=\"54.5,87.2 42.7,87.2 48.6,81.3\"\n" +
+                "\tstyle=\"fill:" + colors[state[63]] + ";stroke:gray;stroke-width:.1\"/>\n" +
+                "<polygon id=\"64\" points=\"42.7,87.2 48.6,81.3 36.8,81.3\"\n" +
+                "\tstyle=\"fill:" + colors[state[64]] + ";stroke:gray;stroke-width:.1\"/>\n" +
+                "<polygon id=\"65\" points=\"42.7,87.2 36.8,81.3 30.8,87.2\"\n" +
+                "\tstyle=\"fill:" + colors[state[65]] + ";stroke:gray;stroke-width:.1\"/>\n" +
+                "<polygon id=\"66\" class=\"st1\" points=\"36.8,81.3 30.8,87.2 24.9,81.3\"\n" +
+                "\tstyle=\"fill:" + colors[state[66]] + ";stroke:gray;stroke-width:.1\"/>\n" +
+                "<polygon id=\"67\" class=\"st1\" points=\"30.8,87.2 24.9,81.3 19,87.2\"\n" +
+                "\tstyle=\"fill:" + colors[state[67]] + ";stroke:gray;stroke-width:.1\"/>\n" +
+                "<polygon id=\"68\" class=\"st1\" points=\"48.6,81.3 42.7,75.4 36.8,81.3\"\n" +
+                "\tstyle=\"fill:" + colors[state[68]] + ";stroke:gray;stroke-width:.1\"/>\n" +
+                "<polygon id=\"69\" points=\"42.7,75.4 36.8,81.3 30.8,75.4\"\n" +
+                "\tstyle=\"fill:" + colors[state[69]] + ";stroke:gray;stroke-width:.1\"/>\n" +
+                "<polygon id=\"70\" class=\"st1\" points=\"36.8,81.3 30.8,75.4 24.9,81.3\"\n" +
+                "\tstyle=\"fill:" + colors[state[70]] + ";stroke:gray;stroke-width:.1\"/>\n" +
+                "<polygon id=\"71\" class=\"st1\" points=\"42.7,75.4 36.8,69.4 30.8,75.4\"\n" +
+                "\tstyle=\"fill:" + colors[state[71]] + ";stroke:gray;stroke-width:.1\"/>\n" +
+                "\n" +
+                "<polygon\n" +
+                "\tid=\"u_face\"\n" +
+                "\tpoints=\"19,9.6 54.5,9.6 36.8,27.3\"\n" +
+                "\tstyle=\"fill:transparent;stroke:gray;stroke-width:1\"/>\n" +
+                "<polygon\n" +
+                "\tid=\"l_face\"\n" +
+                "\tpoints=\"19,45.1 19,9.6 36.8,27.3\"\n" +
+                "\tstyle=\"fill:transparent;stroke:gray;stroke-width:1\"/>\n" +
+                "<polygon\n" +
+                "\tid=\"r_face\"\n" +
+                "\tpoints=\"54.5,9.6 54.5,45.1 36.8,27.3\"\n" +
+                "\tstyle=\"fill:transparent;stroke:gray;stroke-width:1\"/>\n" +
+                "<polygon\n" +
+                "\tid=\"f_face\"\n" +
+                "\tpoints=\"54.5,45.1 19,45.1 36.8,27.3\"\n" +
+                "\tstyle=\"fill:transparent;stroke:gray;stroke-width:1\"/>\n" +
+                "<polygon\n" +
+                "\tid=\"b_face\"\n" +
+                "\tpoints=\"19,51.7 54.5,51.7 36.8,69.4\"\n" +
+                "\tstyle=\"fill:transparent;stroke:gray;stroke-width:1\"/>\n" +
+                "<polygon\n" +
+                "\tid=\"br_face\"\n" +
+                "\tpoints=\"19,87.2 19,51.7 36.8,69.4\"\n" +
+                "\tstyle=\"fill:transparent;stroke:gray;stroke-width:1\"/>\n" +
+                "<polygon\n" +
+                "\tid=\"bl_face\"\n" +
+                "\tpoints=\"54.5,51.7 54.5,87.2 36.8,69.4\"\n" +
+                "\tstyle=\"fill:transparent;stroke:gray;stroke-width:1\"/>\n" +
+                "<polygon\n" +
+                "\tid=\"d_face\"\n" +
+                "\tpoints=\"54.5,87.2 19,87.2 36.8,69.4\"\n" +
+                "\tstyle=\"fill:transparent;stroke:gray;stroke-width:1\"/>\n" +
                 "</svg>\n";
         return returnedString;
     }
