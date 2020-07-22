@@ -2,6 +2,8 @@
 This is an application to draw the states on an FTO (Face Turning Octahedron).
 Currently, this is a Simple GUI Java application that will display the U layer and the relevant information for the Last 3 Triples step as well as a full scramble image.
 
+This uses the notation that is used by CSTimer, QQTimer, and described in [Ben Streeter's YouTube Video](https://www.youtube.com/watch?v=2DbLKqfds0c).
+
 You can run the program through FTODrawer.jar.
 
 You can edit your color scheme in the colors.txt file.  Change the colors in the colors String array to whatever you would like.  The order of the faces are as follows:
