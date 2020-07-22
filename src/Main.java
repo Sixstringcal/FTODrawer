@@ -9,31 +9,7 @@ public class Main {
     };
 
     public static void main(String[] args) {
-        FTO fto = new FTO();
-        Scanner scanner = new Scanner(System.in);
-        System.out.println("Full image or L3T?  Type 1 for full image and 2 for L3T");
-        String imageType = scanner.nextLine();
-        System.out.println("Please enter a scramble");
-        String input = scanner.nextLine();
-        fto.doMoves(input);
-        System.out.println("Please enter a filename (ignore extension)");
-        int[] state = fto.getState();
-
-        try {
-            FileWriter myWriter = new FileWriter(scanner.nextLine() + ".svg");
-            if(imageType.equals("1")){
-                myWriter.write(drawScramble(fto.getState()));
-            }
-            else {
-                myWriter.write(getSVG(fto.getState()));
-            }
-            myWriter.close();
-            System.out.println("Success!");
-        } catch (IOException e) {
-            System.out.println("An error occurred.");
-            e.printStackTrace();
-        }
-
+        MainMenu mainMenu = new MainMenu();
 
     }
 
