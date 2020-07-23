@@ -7,7 +7,7 @@ This uses the notation that is used by CSTimer, QQTimer, and described in [Ben S
 You can run the program through FTODrawer.jar.
 
 You can edit your color scheme in the colors.txt file.  Change the colors in the colors String array to whatever you would like.  The order of the faces are as follows:
-U, L, F, R, BR, B, BL, D faces (using the previously specified notation)).
+U, L, F, R, BR, B, BL, D faces (using the previously specified notation).
 
 You can select either full scramble images or L3T images with the radio buttons on the top.  The default is a full scramble image.
 Type your scramble into the text box labeled "Scramble".
