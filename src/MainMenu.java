@@ -1,22 +1,17 @@
-import javax.imageio.ImageIO;
-import javax.imageio.ImageTranscoder;
+import org.apache.batik.transcoder.TranscoderException;
+import org.apache.batik.transcoder.TranscoderInput;
+import org.apache.batik.transcoder.TranscoderOutput;
+import org.apache.batik.transcoder.image.PNGTranscoder;
+
 import javax.swing.*;
 import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
-import javax.swing.text.BadLocationException;
-import java.awt.*;
 import java.awt.event.ActionEvent;
-import java.io.*;
-
-import org.apache.batik.transcoder.TranscoderException;
-import org.apache.batik.transcoder.image.PNGTranscoder;
-import org.apache.batik.transcoder.TranscoderInput;
-import org.apache.batik.transcoder.TranscoderOutput;
-import java.nio.file.Paths;
-import java.nio.file.Path;
 import java.awt.event.ActionListener;
-import java.awt.image.BufferedImage;
-import java.io.*;
+import java.io.FileOutputStream;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.OutputStream;
 import java.nio.file.Paths;
 
 
@@ -37,6 +32,18 @@ public class MainMenu extends JFrame {
     public MainMenu() {
         super();
         setContentPane(panel);
+        drawScrambleButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                liveUpdate();
+            }
+        });
+        l3tViewerButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                liveUpdate();
+            }
+        });
         liveUpdate();
         scrambleTextBox.getDocument().addDocumentListener(new DocumentListener() {
             @Override
@@ -85,9 +92,7 @@ public class MainMenu extends JFrame {
                 myWriter.write(Main.getSVG(fto.getState()));
             }
             myWriter.close();
-            System.out.println("Success!");
         } catch (IOException ex) {
-            System.out.println("An error occurred.");
             ex.printStackTrace();
         }
     }
@@ -101,14 +106,14 @@ public class MainMenu extends JFrame {
 
             }
             makeFile("liveImages/liveImage");
-            String svg_URI_input = Paths.get("liveImages/liveImage.svg").toUri().toURL().toString();
-            TranscoderInput input_svg_image = new TranscoderInput(svg_URI_input);
-            OutputStream png_ostream = new FileOutputStream("liveImages/liveImage.png");
-            TranscoderOutput output_png_image = new TranscoderOutput(png_ostream);
-            PNGTranscoder my_converter = new PNGTranscoder();
-            my_converter.transcode(input_svg_image, output_png_image);
-            png_ostream.flush();
-            png_ostream.close();
+            String svgInput = Paths.get("liveImages/liveImage.svg").toUri().toURL().toString();
+            TranscoderInput transcoderInput = new TranscoderInput(svgInput);
+            OutputStream outputStream = new FileOutputStream("liveImages/liveImage.png");
+            TranscoderOutput transcoderOutput = new TranscoderOutput(outputStream);
+            PNGTranscoder pngTranscoder = new PNGTranscoder();
+            pngTranscoder.transcode(transcoderInput, transcoderOutput);
+            outputStream.flush();
+            outputStream.close();
 
             ImageIcon icon = new ImageIcon("liveImages/liveImage.png");
             icon.getImage().flush();
