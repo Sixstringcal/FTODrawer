@@ -37,86 +37,21 @@ public class MainMenu extends JFrame {
     public MainMenu() {
         super();
         setContentPane(panel);
+        liveUpdate();
         scrambleTextBox.getDocument().addDocumentListener(new DocumentListener() {
             @Override
             public void insertUpdate(DocumentEvent e) {
-                try {
-                    String a = e.getDocument().getText(0, e.getDocument().getLength());
-                    fto = new FTO();
-                    fto.doMoves(a);
-                    makeFile("liveImages/test");
-
-                    String svg_URI_input = Paths.get("liveImages/test.svg").toUri().toURL().toString();
-                    TranscoderInput input_svg_image = new TranscoderInput(svg_URI_input);
-                    OutputStream png_ostream = new FileOutputStream("liveImages/test.png");
-                    TranscoderOutput output_png_image = new TranscoderOutput(png_ostream);
-                    PNGTranscoder my_converter = new PNGTranscoder();
-                    my_converter.transcode(input_svg_image, output_png_image);
-                    png_ostream.flush();
-                    png_ostream.close();
-
-                    ImageIcon icon = new ImageIcon("liveImages/test.png");
-                    icon.getImage().flush();
-                    scrambleImageLabel.setIcon(icon);
-
-                } catch (BadLocationException | IOException | TranscoderException ex) {
-                    ex.printStackTrace();
-                }
+                liveUpdate();
             }
 
             @Override
             public void removeUpdate(DocumentEvent e) {
-                try {
-                    String a = e.getDocument().getText(0, e.getDocument().getLength());
-                    fto = new FTO();
-                    if(!a.equals("")) {
-                        fto.doMoves(a);
-
-                    }
-                    makeFile("liveImages/test");
-
-
-                    String svg_URI_input = Paths.get("liveImages/test.svg").toUri().toURL().toString();
-                    TranscoderInput input_svg_image = new TranscoderInput(svg_URI_input);
-                    OutputStream png_ostream = new FileOutputStream("liveImages/test.png");
-                    TranscoderOutput output_png_image = new TranscoderOutput(png_ostream);
-                    PNGTranscoder my_converter = new PNGTranscoder();
-                    my_converter.transcode(input_svg_image, output_png_image);
-                    png_ostream.flush();
-                    png_ostream.close();
-
-                    ImageIcon icon = new ImageIcon("liveImages/test.png");
-                    icon.getImage().flush();
-                    scrambleImageLabel.setIcon(icon);
-                } catch (BadLocationException | IOException | TranscoderException ex) {
-                    ex.printStackTrace();
-                }
+                liveUpdate();
             }
 
             @Override
             public void changedUpdate(DocumentEvent e) {
-                try {
-                    String a = e.getDocument().getText(0, e.getDocument().getLength());
-                    fto = new FTO();
-                    fto.doMoves(a);
-                    makeFile("liveImages/test");
-
-
-                    String svg_URI_input = Paths.get("liveImages/test.svg").toUri().toURL().toString();
-                    TranscoderInput input_svg_image = new TranscoderInput(svg_URI_input);
-                    OutputStream png_ostream = new FileOutputStream("liveImages/test.png");
-                    TranscoderOutput output_png_image = new TranscoderOutput(png_ostream);
-                    PNGTranscoder my_converter = new PNGTranscoder();
-                    my_converter.transcode(input_svg_image, output_png_image);
-                    png_ostream.flush();
-                    png_ostream.close();
-
-                    ImageIcon icon = new ImageIcon("liveImages/test.png");
-                    icon.getImage().flush();
-                    scrambleImageLabel.setIcon(icon);
-                } catch (BadLocationException | IOException | TranscoderException ex) {
-                    ex.printStackTrace();
-                }
+                liveUpdate();
             }
         });
         saveButton.addActionListener(new ActionListener() {
@@ -153,6 +88,32 @@ public class MainMenu extends JFrame {
             System.out.println("Success!");
         } catch (IOException ex) {
             System.out.println("An error occurred.");
+            ex.printStackTrace();
+        }
+    }
+
+    public void liveUpdate(){
+        try {
+            String a = scrambleTextBox.getText();
+            fto = new FTO();
+            if(!a.equals("")) {
+                fto.doMoves(a);
+
+            }
+            makeFile("liveImages/liveImage");
+            String svg_URI_input = Paths.get("liveImages/liveImage.svg").toUri().toURL().toString();
+            TranscoderInput input_svg_image = new TranscoderInput(svg_URI_input);
+            OutputStream png_ostream = new FileOutputStream("liveImages/liveImage.png");
+            TranscoderOutput output_png_image = new TranscoderOutput(png_ostream);
+            PNGTranscoder my_converter = new PNGTranscoder();
+            my_converter.transcode(input_svg_image, output_png_image);
+            png_ostream.flush();
+            png_ostream.close();
+
+            ImageIcon icon = new ImageIcon("liveImages/liveImage.png");
+            icon.getImage().flush();
+            scrambleImageLabel.setIcon(icon);
+        } catch (IOException | TranscoderException ex) {
             ex.printStackTrace();
         }
     }
