@@ -24,6 +24,7 @@ public class MainMenu extends JFrame {
     public MainMenu() {
         super();
         setContentPane(panel);
+        /*
         scrambleTextBox.getDocument().addDocumentListener(new DocumentListener() {
             @Override
             public void insertUpdate(DocumentEvent e) {
@@ -59,16 +60,22 @@ public class MainMenu extends JFrame {
                     ex.printStackTrace();
                 }
             }
-        });
+        });*/
         saveButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 try {
                     FileWriter myWriter = new FileWriter(fileNameTextBox.getText() + ".svg");
                     if(drawScrambleButton.isSelected()){
+                        String a = scrambleTextBox.getText();
+                        fto = new FTO();
+                        fto.doMoves(a);
                         myWriter.write(Main.drawScramble(fto.getState()));
                     }
                     else {
+                        String a = scrambleTextBox.getText();
+                        fto = new FTO();
+                        fto.doMoves(a);
                         myWriter.write(Main.getSVG(fto.getState()));
                     }
                     myWriter.close();
