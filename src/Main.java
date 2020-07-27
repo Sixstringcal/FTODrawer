@@ -266,35 +266,35 @@ public class Main {
                 "<polygon\n" +
                 "\tid=\"u_face\"\n" +
                 "\tpoints=\"19,9.6 54.5,9.6 36.8,27.3\"\n" +
-                "\tstyle=\"fill:transparent;stroke:gray;stroke-width:1\"/>\n" +
+                "\tstyle=\"fill:none;stroke:gray;stroke-width:1\"/>\n" +
                 "<polygon\n" +
                 "\tid=\"l_face\"\n" +
                 "\tpoints=\"19,45.1 19,9.6 36.8,27.3\"\n" +
-                "\tstyle=\"fill:transparent;stroke:gray;stroke-width:1\"/>\n" +
+                "\tstyle=\"fill:none;stroke:gray;stroke-width:1\"/>\n" +
                 "<polygon\n" +
                 "\tid=\"r_face\"\n" +
                 "\tpoints=\"54.5,9.6 54.5,45.1 36.8,27.3\"\n" +
-                "\tstyle=\"fill:transparent;stroke:gray;stroke-width:1\"/>\n" +
+                "\tstyle=\"fill:none;stroke:gray;stroke-width:1\"/>\n" +
                 "<polygon\n" +
                 "\tid=\"f_face\"\n" +
                 "\tpoints=\"54.5,45.1 19,45.1 36.8,27.3\"\n" +
-                "\tstyle=\"fill:transparent;stroke:gray;stroke-width:1\"/>\n" +
+                "\tstyle=\"fill:none;stroke:gray;stroke-width:1\"/>\n" +
                 "<polygon\n" +
                 "\tid=\"b_face\"\n" +
                 "\tpoints=\"19,51.7 54.5,51.7 36.8,69.4\"\n" +
-                "\tstyle=\"fill:transparent;stroke:gray;stroke-width:1\"/>\n" +
+                "\tstyle=\"fill:none;stroke:gray;stroke-width:1\"/>\n" +
                 "<polygon\n" +
                 "\tid=\"br_face\"\n" +
                 "\tpoints=\"19,87.2 19,51.7 36.8,69.4\"\n" +
-                "\tstyle=\"fill:transparent;stroke:gray;stroke-width:1\"/>\n" +
+                "\tstyle=\"fill:none;stroke:gray;stroke-width:1\"/>\n" +
                 "<polygon\n" +
                 "\tid=\"bl_face\"\n" +
                 "\tpoints=\"54.5,51.7 54.5,87.2 36.8,69.4\"\n" +
-                "\tstyle=\"fill:transparent;stroke:gray;stroke-width:1\"/>\n" +
+                "\tstyle=\"fill:none;stroke:gray;stroke-width:1\"/>\n" +
                 "<polygon\n" +
                 "\tid=\"d_face\"\n" +
                 "\tpoints=\"54.5,87.2 19,87.2 36.8,69.4\"\n" +
-                "\tstyle=\"fill:transparent;stroke:gray;stroke-width:1\"/>\n" +
+                "\tstyle=\"fill:none;stroke:gray;stroke-width:1\"/>\n" +
                 "</svg>\n";
         return returnedString;
     }

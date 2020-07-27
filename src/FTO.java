@@ -54,7 +54,7 @@ public class FTO {
     public void doMoves(String scramble) {
         String[] moves = scramble.split(" ");
         for (int i = 0; i < moves.length; i++) {
-            switch (moves[i]) {
+            switch (moves[i].trim()) {
 
                 /**
                  * R-based moves and rotations
