@@ -284,7 +284,7 @@ public class FTO {
                     break;
 
                 default:
-                    throw new IllegalArgumentException("The move " + moves[i] + " is not supported.");
+                    //throw new IllegalArgumentException("The move " + moves[i] + " is not supported.");
             }
         }
     }

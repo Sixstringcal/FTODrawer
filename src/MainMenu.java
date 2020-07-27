@@ -30,6 +30,7 @@ public class MainMenu extends JFrame {
     private JTextField fileNameTextBox;
     private JButton saveButton;
     private JLabel svgEndingLabel;
+    private JLabel scrambleImageLabel;
     private FTO fto;
 
 
@@ -47,12 +48,16 @@ public class MainMenu extends JFrame {
 
                     String svg_URI_input = Paths.get("liveImages/test.svg").toUri().toURL().toString();
                     TranscoderInput input_svg_image = new TranscoderInput(svg_URI_input);
-                    OutputStream png_ostream = new FileOutputStream("test.png");
+                    OutputStream png_ostream = new FileOutputStream("liveImages/test.png");
                     TranscoderOutput output_png_image = new TranscoderOutput(png_ostream);
                     PNGTranscoder my_converter = new PNGTranscoder();
                     my_converter.transcode(input_svg_image, output_png_image);
                     png_ostream.flush();
                     png_ostream.close();
+
+                    ImageIcon icon = new ImageIcon("liveImages/test.png");
+                    icon.getImage().flush();
+                    scrambleImageLabel.setIcon(icon);
 
                 } catch (BadLocationException | IOException | TranscoderException ex) {
                     ex.printStackTrace();
@@ -66,18 +71,23 @@ public class MainMenu extends JFrame {
                     fto = new FTO();
                     if(!a.equals("")) {
                         fto.doMoves(a);
-                        makeFile("liveImages/test");
 
-
-                        String svg_URI_input = Paths.get("liveImages/test.svg").toUri().toURL().toString();
-                        TranscoderInput input_svg_image = new TranscoderInput(svg_URI_input);
-                        OutputStream png_ostream = new FileOutputStream("test.png");
-                        TranscoderOutput output_png_image = new TranscoderOutput(png_ostream);
-                        PNGTranscoder my_converter = new PNGTranscoder();
-                        my_converter.transcode(input_svg_image, output_png_image);
-                        png_ostream.flush();
-                        png_ostream.close();
                     }
+                    makeFile("liveImages/test");
+
+
+                    String svg_URI_input = Paths.get("liveImages/test.svg").toUri().toURL().toString();
+                    TranscoderInput input_svg_image = new TranscoderInput(svg_URI_input);
+                    OutputStream png_ostream = new FileOutputStream("liveImages/test.png");
+                    TranscoderOutput output_png_image = new TranscoderOutput(png_ostream);
+                    PNGTranscoder my_converter = new PNGTranscoder();
+                    my_converter.transcode(input_svg_image, output_png_image);
+                    png_ostream.flush();
+                    png_ostream.close();
+
+                    ImageIcon icon = new ImageIcon("liveImages/test.png");
+                    icon.getImage().flush();
+                    scrambleImageLabel.setIcon(icon);
                 } catch (BadLocationException | IOException | TranscoderException ex) {
                     ex.printStackTrace();
                 }
@@ -94,12 +104,16 @@ public class MainMenu extends JFrame {
 
                     String svg_URI_input = Paths.get("liveImages/test.svg").toUri().toURL().toString();
                     TranscoderInput input_svg_image = new TranscoderInput(svg_URI_input);
-                    OutputStream png_ostream = new FileOutputStream("test.png");
+                    OutputStream png_ostream = new FileOutputStream("liveImages/test.png");
                     TranscoderOutput output_png_image = new TranscoderOutput(png_ostream);
                     PNGTranscoder my_converter = new PNGTranscoder();
                     my_converter.transcode(input_svg_image, output_png_image);
                     png_ostream.flush();
                     png_ostream.close();
+
+                    ImageIcon icon = new ImageIcon("liveImages/test.png");
+                    icon.getImage().flush();
+                    scrambleImageLabel.setIcon(icon);
                 } catch (BadLocationException | IOException | TranscoderException ex) {
                     ex.printStackTrace();
                 }
@@ -112,6 +126,8 @@ public class MainMenu extends JFrame {
             }
         });
         pack();
+        setSize(400,700);
+
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setVisible(true);
     }
@@ -122,7 +138,9 @@ public class MainMenu extends JFrame {
             if(drawScrambleButton.isSelected()){
                 String a = scrambleTextBox.getText();
                 fto = new FTO();
-                fto.doMoves(a);
+                if(!a.equals("")) {
+                    fto.doMoves(a);
+                }
                 myWriter.write(Main.drawScramble(fto.getState()));
             }
             else {
