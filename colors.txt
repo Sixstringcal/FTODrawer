@@ -2,7 +2,7 @@ white
 purple
 red
 green
-pink
+silver
 blue
 orange
-black
+yellow

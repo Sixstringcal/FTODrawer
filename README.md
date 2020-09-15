@@ -17,3 +17,5 @@ Type the file without the extension in the text box labeled "Save File as:".
 Click the "Save Image" button to save the image.
 
 This image will be saved in the root of the FTODrawer folder as an SVG.
+
+The FTODrawer .jar file is present in the Dependencies folder along with the other dependencies necessary to run the project.  The .jar will not render the images in live-time, so if you want to run with live images (and png output support), please run this in your IDE of choice and list the dependencies in the Dependencies folder (ignoring FTODrawer.jar).
